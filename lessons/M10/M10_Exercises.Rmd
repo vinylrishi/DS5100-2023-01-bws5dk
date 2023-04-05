@@ -1,0 +1,97 @@
+---
+title: "M10_Exercises"
+author: "Rishi"
+date: "2023-04-04"
+output: html_document
+---
+
+
+# 10.1  
+
+```{r}
+fib <- c()
+fib[1] <- 1
+fib[2] <- 1
+for (i in 3:10){
+  fib[i] <- fib[i - 2] + fib[i - 1]}
+
+print(fib)
+  
+```
+
+# 10.2  
+
+```{r}
+fibf <- function(n = 10){
+  fib2 <- numeric(n)
+  fib2[1]<-1
+  fib2[2]<-1
+  for (i in 3:n){
+    fib2[i] <- fib2[i - 2] + fib2[i - 1]}
+  return(fib2)
+}
+  
+```
+
+```{r}
+print(fibf(15))
+```
+
+
+# 10.3  
+
+```{r}
+within01 <- function(x){
+  if (x>=0 && x<=1){
+    return(1)
+  }
+  else{
+    return(0)
+  }
+}
+```
+
+
+# 10.4  
+
+```{r}
+within01(1)
+within01(0)
+within01(.4)
+within01(2)
+within01(-0.3)
+
+```
+
+
+# 10.5  
+
+```{r}
+F10 <- head(letters, 10)
+L10 <- tail(LETTERS,10)
+M2224 <- LETTERS[22:24]  
+print(F10)
+print(L10)
+print(M2224)
+```
+
+
+# 10.6  
+
+```{r}
+for (i in 1:100){
+  if (i %% 3 == 0 && i %% 5 == 0){
+    print(paste(i, 'FizzBuzz'))
+  }
+  else if (i%%3 == 0){
+    print(paste(i,'Fizz'))
+  }
+  else if (i%%5 == 0){
+    print(paste(i,'Buzz'))
+  }
+  else{
+    print(i)
+  }
+}
+```
+
