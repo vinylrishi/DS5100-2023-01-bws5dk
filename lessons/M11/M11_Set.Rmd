@@ -1,0 +1,182 @@
+---
+title: "M11_Set"
+author: "Rishi"
+date: "2023-04-11"
+output: html_document
+---
+
+# 11.1  
+
+```{r}
+library(tidyverse)
+```
+# 11.2  
+
+```{r}
+scores <- 
+  tibble(
+    name = c("mike", "carol", "greg", "marcia", "peter", "jan", "bobby", "cindy", "alice"),
+    school = c("south", "south", "south", "south", "north", "north", "north", "south", "south"),
+    teacher = c("johnson", "johnson", "johnson", "johnson",  "smith", "smith", "smith", "perry", "perry"),
+    sex = c("male", "female", "male", "female", "male", "female", "male", "female", "female"),
+    math_score = c(4, 3, 2, 4, 3, 4, 5, 4, 5),
+    reading_score = c(1, 5, 2, 4, 5, 4, 1, 5, 4)
+)
+```
+
+
+# 11.3  
+
+```{r}
+scores
+```
+
+
+# 11.4  
+
+```{r}
+scores %>% 
+  head(3)
+```
+
+
+```{r}
+scores3 <- scores %>% 
+  head(3)
+```
+
+```{r}
+scores3
+```
+
+
+# 11.5 
+Bobby and Alice had top scores of 5
+
+```{r}
+scores %>% 
+  arrange(desc(math_score))
+```
+
+# 11.6  
+
+```{r}
+scores %>% 
+  arrange(name)
+```
+
+
+# 11.7  
+
+Female sex has higher mean score for reading
+
+```{r}
+scores %>% 
+  arrange(sex)
+```
+
+```{r}
+scores %>% 
+  group_by(sex) %>% 
+  summarise(mean(reading_score))
+```
+
+
+# 11.8  
+
+```{r}
+scores %>%
+    arrange(school, teacher, sex, math_score, reading_score)
+```
+
+
+# 11.9  
+
+```{r}
+scores %>% 
+  select(name, math_score, reading_score)
+```
+
+
+# 11.10  
+
+```{r}
+scores %>% 
+  select(-sex)
+```
+
+
+# 11.11  
+
+```{r}
+scores %>% 
+  select(-math_score, -reading_score)
+```
+
+
+# 11.12  
+
+```{r}
+scores %>% 
+  select(sex, everything())
+```
+
+
+# 11.13  
+
+```{r}
+scores %>% 
+  filter(sex == 'male' & school == 'south')
+```
+
+
+# 11.14  
+
+```{r}
+scores %>%
+    filter(math_score > mean(math_score))
+```
+
+
+# 11.15  
+
+```{r}
+scores %>%
+    filter(math_score >= 4 & reading_score >= 3)
+```
+
+
+# 11.16  
+
+```{r}
+scores %>%
+    filter(math_score <= 3 | reading_score <= 3)
+```
+
+
+# 11.17  
+
+```{r}
+scores %>%
+    filter(reading_score >= 2 & reading_score <= 4)
+```
+
+
+# 11.18  
+
+```{r}
+scores %>%
+    filter(substr(name, 1, 1) == 'm')
+```
+
+
+# 11.19  
+
+```{r}
+scores %>% 
+  group_by(teacher) %>% 
+  filter(math_score == 5)
+```
+
+
+Out of time
