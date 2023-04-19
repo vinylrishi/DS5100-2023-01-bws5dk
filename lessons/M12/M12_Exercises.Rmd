@@ -1,0 +1,124 @@
+---
+title: "M12_Exercises"
+author: "Rishi"
+date: "2023-04-18"
+output: html_document
+---
+
+
+```{r warning=FALSE, include=FALSE}
+library(vctrs)
+library(tidyverse)
+
+```
+
+# 12.1  
+
+Don't see anything
+
+```{r}
+mpg %>% ggplot()
+```
+
+
+
+
+# 12.2  
+
+```{r}
+mpg %>%
+    ggplot(aes(x = cyl, y = hwy))+
+    geom_point()
+```
+
+
+# 12.3   
+
+Data is categorical with few points.
+```{r}
+mpg %>% 
+  ggplot(aes(x = class, y = drv))+
+  geom_point()
+```
+
+
+
+# 12.4  
+
+```{r}
+x <- seq(-6*pi, 6*pi, length.out = 100)
+df <- data.frame(x = x, y = sin(x)/x)
+head(df)
+```
+
+
+```{r}
+df %>% 
+  ggplot(aes(x = x, y = y))+ 
+  geom_line()
+```
+
+
+# 12.5 
+
+```{r}
+cars %>% 
+  ggplot(aes(x = speed, y = dist))+
+  geom_point()
+```
+
+
+# 12.6  
+
+```{r}
+cars %>%
+    ggplot(aes(x = speed, y = dist))+
+    geom_point(aes(color = dist > 80))
+```
+
+
+# 12.7  
+
+```{r}
+cars %>%
+    ggplot(aes(x = speed, y = dist))+ 
+    geom_point(aes(color = dist > 80))+ 
+    scale_color_manual(values = c("blue", "red"))
+```
+
+
+# 12.8  
+
+```{r}
+cars %>%
+  ggplot(aes(x = speed, y = dist))+ 
+  geom_point(aes(color = dist > 80))+ 
+  scale_color_manual(values = c("blue", "red"))+
+  geom_smooth(method = 'lm')
+```
+
+
+# 12.9  
+
+```{r}
+cars %>%
+    ggplot(aes(x = speed)) + 
+    geom_histogram(bins = 10)
+```
+
+```{r}
+cars %>%
+    ggplot(aes(x = dist)) + 
+    geom_histogram(bins = 10)
+```
+
+
+# 12.10  
+
+```{r}
+mpg %>% 
+  ggplot()+
+  geom_point(aes(x = hwy, y = cty))+
+  facet_grid(drv ~ cyl)
+```
+
